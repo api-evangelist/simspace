@@ -1,0 +1,22 @@
+generated: '2026-08-27'
+method: probed
+source: https://simspace.com/.well-known/oauth-authorization-server
+docs: null
+note: >-
+  The only OAuth scope surface SimSpace publishes anonymously is the one declared in
+  its RFC 8414 authorization-server metadata and echoed in its RFC 9728
+  protected-resource metadata. It carries a single scope. SimSpace publishes no scopes
+  or permissions reference page for the platform API; if the platform API uses scopes,
+  they are documented only inside the authenticated portal.
+schemes:
+- name: oauth2-mcp
+  source: https://simspace.com/.well-known/oauth-authorization-server
+  authorization_url: https://simspace.com/oauth/authorize
+  token_url: https://simspace.com/oauth/token
+scopes:
+- name: mcp
+  description: Access the MCP server surface at https://simspace.com/wp-json/mcp/mcp-oauth-server
+  source: scopes_supported in RFC 8414 authorization-server metadata and RFC 9728
+    protected-resource metadata
+  applies_to: https://simspace.com/wp-json/mcp/mcp-oauth-server
+scope_count: 1

@@ -1,0 +1,68 @@
+generated: '2026-08-27'
+method: probed
+source: live probes of simspace.com and portal.simspace.com
+note: >-
+  SimSpace publishes no public API reference, so almost nothing about the platform
+  API's cross-cutting semantics can be established. Everything below is either observed
+  on a live anonymous request or explicitly recorded as unknown. Nothing here is
+  inferred from a marketing claim.
+auth_style:
+  platform_api: unknown
+  platform_api_note: 'https://portal.simspace.com/api/v1 returns HTTP 400 "invalid
+    arguments" (text/plain) to an anonymous request rather than a 401 challenge, so no
+    scheme is advertised to unauthenticated callers.'
+  mcp_surface: oauth2 bearer, RFC 9728 challenge
+  see: authentication/simspace-authentication.yml
+versioning:
+  style: uri-path
+  current: v1
+  evidence: https://portal.simspace.com/api/v1
+  policy_documented: false
+  see: lifecycle/simspace-lifecycle.yml
+idempotency:
+  supported: unknown
+  header: null
+  note: No public documentation of an idempotency key, and the API is not anonymously
+    inspectable. No Idempotency pointer is emitted.
+pagination:
+  style: unknown
+  params: []
+  note: Not documented publicly.
+error_envelope:
+  platform_api:
+    observed: 'plain text body, e.g. "invalid arguments" with content-type
+      text/plain; charset=utf-8 on HTTP 400'
+    problem_json: false
+  mcp_surface:
+    observed: 'WordPress REST envelope: {"code":"mcp_unauthorized","message":"MCP
+      authentication required.","data":{"status":401}}'
+    problem_json: false
+  note: Neither observed surface uses RFC 9457 application/problem+json.
+rate_limit_signaling:
+  headers_observed: []
+  note: No X-RateLimit-*, RateLimit-* or Retry-After headers were returned on any
+    anonymous probe; limits are undocumented. See rate-limits/simspace-rate-limits.yml.
+request_id_tracing:
+  header: ref-id
+  observed_on: https://portal.simspace.com/
+  note: 'The portal returns a `ref-id` response header carrying a UUID (observed:
+    7aa630c4-abb5-4105-8c0e-7feef559e372). Whether the platform API returns the same
+    header on API responses is not established.'
+field_expansion:
+  supported: unknown
+metadata:
+  supported: unknown
+dry_run_mode:
+  supported: unknown
+  note: Not documented.
+reversibility:
+  grade: unknown
+  write_surface: unknown
+  reversals: []
+  note: >-
+    Not assessable. The platform API is not read-only — published release notes describe
+    content-share auditing and range operations, so write surfaces exist — but no public
+    reference names a single operation, let alone a cancel/undo/restore path or a
+    window inside which it works. Recorded as unknown rather than `na` (which would
+    claim a read-only API) and rather than `documented` (which would claim a reversal
+    path we never saw). No window is asserted because none is published.

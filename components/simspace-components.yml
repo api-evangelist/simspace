@@ -1,0 +1,24 @@
+generated: '2026-08-27'
+method: searched
+source: https://www.npmjs.com/package/@simspace/monorail
+note: >-
+  SimSpace publishes one client-side component library. It is an internal-facing design
+  system for the SimSpace Portal Suite, not an embeddable widget or hosted UI surface
+  a customer drops into their own product, and it has not been released since 2021.
+families:
+- name: Monorail
+  kind: design-system
+  technology: React
+  package: '@simspace/monorail'
+  registry: npm
+  url: https://www.npmjs.com/package/@simspace/monorail
+  repository: https://github.com/Simspace/monorail
+  license: MIT
+  version: 0.0.27
+  published: '2021-01-22'
+  description: SimSpace Design System — the React component library behind the SimSpace
+    Portal Suite UI.
+  embeddable: false
+  hosted_surface: false
+loaders: []
+hosted_components: []

@@ -1,0 +1,93 @@
+generated: '2026-08-27'
+method: searched
+source: https://simspace.com/.well-known/
+note: >-
+  Probed every SimSpace host discovered in apis.yml and on the Atlassian Statuspage
+  component list. Two real documents were returned and saved: RFC 8414 OAuth
+  authorization-server metadata and RFC 9728 OAuth protected-resource metadata, both
+  served by the WordPress MCP adapter running on the corporate site at simspace.com.
+  simspace.com answers 404 with a full ~360KB WordPress HTML page for every other
+  /.well-known/ path, so those are recorded as the misses they are. portal.simspace.com,
+  portal-eu.simspace.com and portal-sso.simspace.com return a bare 403 "Forbidden" for
+  every /.well-known/ path (an edge policy, not a document). trust.simspace.com sits
+  behind a Cloudflare interstitial.
+hit_count: 2
+hosts:
+- host: https://simspace.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: simspace-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: simspace-oauth-protected-resource.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://portal.simspace.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+- host: https://portal-eu.simspace.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+- host: https://portal-sso.simspace.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+- host: https://api.simspace.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://status.simspace.com
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404

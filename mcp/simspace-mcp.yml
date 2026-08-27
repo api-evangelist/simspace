@@ -1,0 +1,70 @@
+generated: '2026-08-27'
+method: probed
+status: published
+source: https://simspace.com/.well-known/oauth-protected-resource
+note: >-
+  SimSpace serves a live, OAuth-protected remote MCP endpoint from its own corporate
+  host. It is discoverable the correct way: /.well-known/oauth-protected-resource
+  (RFC 9728) names the resource, /.well-known/oauth-authorization-server (RFC 8414)
+  names the authorization server, and an anonymous POST of tools/list returns
+  HTTP 401 with a well-formed
+  `WWW-Authenticate: Bearer realm="https://simspace.com", resource_metadata="..."`
+  challenge. IMPORTANT SCOPE CAVEAT, recorded so nobody over-reads this: the endpoint
+  is the WordPress MCP adapter running on the simspace.com marketing site (the
+  wp-json/mcp namespace, alongside a wp-abilities/v1 namespace), NOT the SimSpace
+  cyber range platform API at portal.simspace.com/api/v1. It exposes the corporate
+  website's WordPress abilities to an agent, not range or simulation operations. The
+  tool list could not be enumerated because tools/list is auth-gated; no tool names
+  are recorded here rather than guessed.
+server:
+  name: simspace-wordpress-mcp
+  transport: http
+  url: https://simspace.com/wp-json/mcp/mcp-oauth-server
+  implementation: WordPress MCP Adapter (wp-json/mcp namespace)
+deployment:
+  mode: remote
+  endpoint: https://simspace.com/wp-json/mcp/mcp-oauth-server
+  auth: oauth
+  verified: probed
+authorization:
+  authorization_server: https://simspace.com
+  metadata:
+    oauth_authorization_server: https://simspace.com/.well-known/oauth-authorization-server
+    oauth_protected_resource: https://simspace.com/.well-known/oauth-protected-resource
+  authorization_endpoint: https://simspace.com/oauth/authorize
+  token_endpoint: https://simspace.com/oauth/token
+  revocation_endpoint: https://simspace.com/oauth/revoke
+  grant_types_supported:
+  - authorization_code
+  - refresh_token
+  code_challenge_methods_supported:
+  - S256
+  scopes_supported:
+  - mcp
+  token_endpoint_auth_methods_supported:
+  - none
+  dynamic_client_registration: client_id_metadata_document
+tools: []
+tools_note: >-
+  Not enumerated. tools/list returns 401 mcp_unauthorized without a bearer token, and
+  no public tool list is published in an llms.txt or in the docs. Authenticated
+  introspection is required to record real tool names and inputSchemas.
+x-evidence:
+- url: https://simspace.com/.well-known/oauth-protected-resource
+  method: GET
+  http_status: 200
+  fetched: '2026-08-27'
+- url: https://simspace.com/.well-known/oauth-authorization-server
+  method: GET
+  http_status: 200
+  fetched: '2026-08-27'
+- url: https://simspace.com/wp-json/mcp/mcp-oauth-server
+  method: POST tools/list
+  http_status: 401
+  body: '{"code":"mcp_unauthorized","message":"MCP authentication required.","data":{"status":401}}'
+  www_authenticate: Bearer realm="https://simspace.com", resource_metadata="https://simspace.com/.well-known/oauth-protected-resource"
+  fetched: '2026-08-27'
+- url: https://simspace.com/wp-json/mcp/mcp-adapter-default-server
+  method: POST tools/list
+  http_status: 401
+  fetched: '2026-08-27'

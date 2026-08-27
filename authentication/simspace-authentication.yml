@@ -1,0 +1,70 @@
+generated: '2026-08-27'
+method: probed
+source: https://simspace.com/.well-known/oauth-authorization-server
+note: >-
+  SimSpace publishes no public API authentication documentation. Everything recorded
+  here was observed directly on live hosts. The OAuth 2.0 profile below belongs to the
+  MCP surface on simspace.com, which is the only authentication surface SimSpace exposes
+  anonymously in machine-readable form. The platform API at portal.simspace.com/api/v1
+  and the portal SSO host portal-sso.simspace.com return 403 for every /.well-known/
+  path, so their auth scheme could not be established without credentials.
+schemes:
+- name: oauth2-mcp
+  type: oauth2
+  applies_to: https://simspace.com/wp-json/mcp/mcp-oauth-server
+  flows:
+    authorizationCode:
+      authorizationUrl: https://simspace.com/oauth/authorize
+      tokenUrl: https://simspace.com/oauth/token
+      refreshUrl: https://simspace.com/oauth/token
+      revocationUrl: https://simspace.com/oauth/revoke
+      scopes:
+        mcp: Access the MCP server surface
+  pkce:
+    required: unknown
+    methods:
+    - S256
+  grant_types:
+  - authorization_code
+  - refresh_token
+  response_types:
+  - code
+  token_endpoint_auth_methods:
+  - none
+  client_registration: client_id_metadata_document_supported
+  bearer_methods:
+  - header
+  challenge:
+    status: 401
+    www_authenticate: Bearer realm="https://simspace.com", resource_metadata="https://simspace.com/.well-known/oauth-protected-resource"
+    rfc: RFC 9728
+  source: https://simspace.com/.well-known/oauth-authorization-server
+- name: platform-api-unknown
+  type: unknown
+  applies_to: https://portal.simspace.com/api/v1
+  documented: false
+  note: >-
+    Live host; an anonymous unparameterized request returns HTTP 400 "invalid arguments"
+    rather than a 401, so no authentication challenge is emitted to unauthenticated
+    callers and the scheme cannot be inferred. The API reference lives inside the
+    authenticated portal SPA (portal.simspace.com/docs/latest/) and the customer-only
+    Freshdesk support site.
+identity_providers:
+  sso_host: https://portal-sso.simspace.com/
+  protocols: unknown
+  note: A dedicated SSO host exists and is a tracked Statuspage component, but its
+    /.well-known/openid-configuration returns 403 so the protocol could not be confirmed.
+x-evidence:
+- url: https://simspace.com/.well-known/oauth-authorization-server
+  http_status: 200
+  fetched: '2026-08-27'
+- url: https://simspace.com/wp-json/mcp/mcp-oauth-server
+  http_status: 401
+  fetched: '2026-08-27'
+- url: https://portal.simspace.com/api/v1
+  http_status: 400
+  body: invalid arguments
+  fetched: '2026-08-27'
+- url: https://portal-sso.simspace.com/.well-known/openid-configuration
+  http_status: 403
+  fetched: '2026-08-27'

@@ -1,0 +1,80 @@
+generated: '2026-08-27'
+method: searched
+source: https://trust.simspace.com/
+note: >-
+  Compliance posture read from the SimSpace Trust Center (hosted on SafeBase by Drata).
+  Protocol conformance read from the two /.well-known/ documents SimSpace actually
+  serves. No OpenAPI, GraphQL SDL or AsyncAPI is published, so no spec-derived
+  conformance claims are made.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: 'https://simspace.com/.well-known/oauth-authorization-server declares
+    authorization_code and refresh_token grants with an authorization_endpoint,
+    token_endpoint and revocation_endpoint.'
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: 'HTTP 200 application/json at https://simspace.com/.well-known/oauth-authorization-server
+    with issuer, authorization_endpoint, token_endpoint, response_types_supported.'
+- id: rfc9728-oauth-protected-resource-metadata
+  conforms: true
+  evidence: 'HTTP 200 at https://simspace.com/.well-known/oauth-protected-resource,
+    and the gated MCP endpoint returns WWW-Authenticate: Bearer with a resource_metadata
+    parameter pointing at it.'
+- id: rfc7636-pkce
+  conforms: true
+  evidence: 'code_challenge_methods_supported: ["S256"] in the authorization-server
+    metadata.'
+- id: mcp
+  conforms: true
+  evidence: 'A JSON-RPC MCP endpoint is served at https://simspace.com/wp-json/mcp/mcp-oauth-server
+    (401 mcp_unauthorized to an anonymous tools/list, with a conformant OAuth challenge).'
+- id: oidc
+  conforms: false
+  evidence: '/.well-known/openid-configuration returns 404 on simspace.com and 403 on
+    every portal host.'
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on simspace.com and api.simspace.com.
+- id: rfc9457-problem-details
+  conforms: unknown
+  evidence: No public API contract or error reference is available to test; the platform
+    API reference is inside the authenticated portal.
+compliance:
+  source: https://trust.simspace.com/
+  host: SafeBase by Drata
+  certifications:
+  - id: soc2-type2
+    name: SOC 2 Type 2
+    status: certified
+  - id: iso-27001-2022
+    name: ISO/IEC 27001:2022
+    status: certified
+  - id: cmmc-level-2
+    name: CMMC Level 2
+    status: certified
+    note: Validated against NIST SP 800-171.
+  - id: csa-star-level-1
+    name: CSA STAR Level 1
+    status: certified
+  - id: nist-800-171
+    name: NIST SP 800-171
+    status: aligned
+  - id: gdpr
+    name: GDPR
+    status: aligned
+  - id: ccpa
+    name: CCPA
+    status: aligned
+  - id: hecvat-lite
+    name: HECVAT Lite
+    status: published
+domain_standard:
+  applicable: false
+  note: >-
+    Cyber range, security training and simulation has no published cross-vendor
+    interchange standard of the kind domain_standard_conformance rewards (no SCIM URN,
+    OData $metadata, OpenRTB, Sparkplug, LTI/OneRoster, HL7v2/X12/ISO-20022 shape
+    applies). Recorded as not-applicable rather than invented. The compliance frameworks
+    above (CMMC, NIST SP 800-171, ISO 27001) are organizational certifications, not
+    contract-level message standards, and are recorded under compliance for that reason.

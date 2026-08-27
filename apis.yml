@@ -1,18 +1,62 @@
 aid: simspace
 name: SimSpace
-description: 'SimSpace is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'SimSpace Corporation builds a realistic, high-fidelity cyber range and
+  simulation platform used by security teams to train people, test technology, and
+  now to train, validate and operationalize AI agents alongside human defenders. The
+  product line spans the AI Proving Grounds, Range Workbench (visual and YAML-as-code
+  range design and versioning), and Team Trainer, delivered through the SimSpace Portal
+  Suite at portal.simspace.com with a European instance at portal-eu.simspace.com.
+  SimSpace serves critical infrastructure, financial services, healthcare, insurance,
+  higher education, US federal and military, state and local, and international government
+  customers. The platform is described by the company as API-first, exposing programmatic
+  access for custom integrations, automation and data extensibility; the platform REST
+  API is served from portal.simspace.com/api/v1 but its reference documentation is
+  published only inside the authenticated portal and the customer-only Freshdesk support
+  site, so no public machine-readable contract is available. SimSpace is headquartered
+  in Orlando, Florida.'
 url: https://raw.githubusercontent.com/api-evangelist/simspace/refs/heads/main/apis.yml
+image: https://simspace.com/wp-content/uploads/2025/10/square_logo_linkedin-x-4x-1.jpg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-27'
 modified: '2026-08-27'
 tags:
 - Company
-apis: []
+- Cybersecurity
+- Cyber Range
+- Security Training
+- Simulation
+- AI Agents
+- Security Operations
+- Critical Infrastructure
+- Government
+- Compliance
+apis:
+- aid: simspace-platform
+  name: SimSpace Platform API
+  description: 'The SimSpace Portal Suite platform API. SimSpace describes the cyber
+    range platform as built API-first, giving partners and customers programmatic access
+    for custom integrations, automation, advanced workflows and data extensibility.
+    Published release notes reference specific API surfaces including an audit-log
+    extraction endpoint and a bulk REST API service for auditing content shares. The
+    API host answers on portal.simspace.com/api/v1 (HTTP 400 "invalid arguments" to
+    an unparameterized anonymous request, confirming a live router), but the API reference
+    is served only from the authenticated portal single-page application and the
+    customer-only Freshdesk support site, so no public OpenAPI, GraphQL SDL or other
+    machine-readable contract could be retrieved.'
+  humanURL: https://portal.simspace.com/
+  baseURL: https://portal.simspace.com/api/v1
+  tags:
+  - Cyber Range
+  - Simulation
+  - Security Operations
+  properties:
+  - type: Portal
+    url: https://portal.simspace.com/
+  - type: ChangeLog
+    url: https://simspace.com/release-notes/
+  x-access: customer-only
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +64,61 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://simspace.com/
+- type: DeveloperPortal
+  url: https://portal.simspace.com/
+- type: Documentation
+  url: https://simspace.com/release-notes/
+- type: Support
+  url: https://simspace.com/contact-us/
+- type: HelpCenter
+  url: https://support.simspace.com/support/home
+- type: Blog
+  url: https://simspace.com/blogs/
+- type: GitHubOrganization
+  url: https://github.com/Simspace
+- type: SignUp
+  url: https://simspace.com/request-demo/
+- type: TermsOfService
+  url: https://simspace.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://simspace.com/privacy-policy/
+- type: StatusPage
+  url: https://status.simspace.com/
+- type: TrustCenter
+  url: https://trust.simspace.com/
+- type: Compliance
+  url: https://trust.simspace.com/
+- type: DomainSecurity
+  url: security/simspace-domain-security.yml
+- type: MCPServer
+  url: mcp/simspace-mcp.yml
+- type: WellKnown
+  url: well-known/simspace-well-known.yml
+- type: Authentication
+  url: authentication/simspace-authentication.yml
+- type: OAuthScopes
+  url: scopes/simspace-scopes.yml
+- type: Packages
+  url: packages/simspace-packages.yml
+- type: Components
+  url: components/simspace-components.yml
+- type: Conformance
+  url: conformance/simspace-conformance.yml
+- type: Lifecycle
+  url: lifecycle/simspace-lifecycle.yml
+- type: ChangeLog
+  url: changelog/simspace-changelog.yml
+- type: Conventions
+  url: conventions/simspace-conventions.yml
+- type: Plans
+  url: plans/simspace-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/simspace-rate-limits.yml
+- type: LLMsTxt
+  url: llms/simspace-llms.txt
+x-enrichment:
+  date: '2026-08-27'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1

@@ -1,0 +1,22 @@
+generated: '2026-08-27'
+method: searched
+source: https://simspace.com/release-notes/
+note: >-
+  SimSpace publishes no rate limits. Nothing in the public release notes, SLA, terms of
+  use or end user agreement states a request quota, window, burst allowance or throttle
+  behaviour, and the API reference that might carry them is inside the authenticated
+  portal. No rate-limit response headers were returned on any anonymous probe of
+  portal.simspace.com/api/v1 or the MCP endpoint on simspace.com. An honest zero.
+limit_count: 0
+limits: []
+headers: []
+exhaustion_status: unknown
+x-evidence:
+- url: https://portal.simspace.com/api/v1
+  http_status: 400
+  rate_limit_headers: none
+  fetched: '2026-08-27'
+- url: https://simspace.com/wp-json/mcp/mcp-oauth-server
+  http_status: 401
+  rate_limit_headers: none
+  fetched: '2026-08-27'

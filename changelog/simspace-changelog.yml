@@ -1,0 +1,34 @@
+generated: '2026-08-27'
+method: searched
+source: https://simspace.com/release-notes/
+url: https://simspace.com/release-notes/
+note: >-
+  SimSpace publishes a public release-notes page covering the Platform (versions 6.7
+  through 6.38) and the User Emulation component (14.0.0 through 14.6.0). The page
+  carries NO publication dates on any entry, so entries below are ordered by version
+  only and no date can be asserted. Several entries reference API work; those are
+  captured verbatim in summary because they are the only public evidence of the
+  platform API surface.
+scheme: product-release
+dated: false
+current_version: Platform 6.38
+components:
+- name: Platform
+  current: '6.38'
+- name: User Emulation
+  current: 14.6.0
+entries:
+- version: '6.38'
+  date: null
+  breaking: unknown
+  highlights:
+  - Portal fixes for reservation planning errors
+  - Security dependency updates addressing known vulnerabilities
+  - Attack scenario updates for tunable support
+- version: '6.17'
+  date: null
+  breaking: unknown
+  api_related: true
+  highlights:
+  - Added an API endpoint and script for extracting audit log data
+  - Added a bulk REST API service for auditing content shares

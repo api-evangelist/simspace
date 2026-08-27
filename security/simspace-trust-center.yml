@@ -1,0 +1,47 @@
+generated: '2026-08-27'
+method: searched
+source: https://trust.simspace.com/
+url: https://trust.simspace.com/
+host: SafeBase by Drata
+note: >-
+  trust.simspace.com sits behind a Cloudflare interstitial to a plain curl (HTTP 403,
+  "Just a moment..."), but the page demonstrably exists and renders to a browser
+  user-agent — it is a bot challenge, not a dead pointer. Certifications below were
+  read from the rendered page.
+certifications:
+- id: soc2-type2
+  name: SOC 2 Type 2
+- id: iso-27001-2022
+  name: ISO/IEC 27001:2022
+- id: cmmc-level-2
+  name: CMMC Level 2
+  note: Validated against NIST SP 800-171.
+- id: csa-star-level-1
+  name: CSA STAR Level 1
+- id: nist-800-171
+  name: NIST SP 800-171
+- id: gdpr
+  name: GDPR
+- id: ccpa
+  name: CCPA
+- id: hecvat-lite
+  name: HECVAT Lite
+documents_gated: true
+documents_note: SafeBase trust centers gate the underlying reports (SOC 2 report, ISO
+  certificate) behind an NDA request form; only the badge list is public.
+vulnerability_disclosure:
+  published_policy: false
+  note: >-
+    The trust center exposes SafeBase's generic "Report issue" control, but SimSpace
+    publishes no named vulnerability disclosure or responsible disclosure policy, no
+    bug bounty program (no HackerOne, Bugcrowd or Intigriti listing was found), and no
+    /.well-known/security.txt (404 on simspace.com and api.simspace.com). No
+    Security / VulnerabilityDisclosure pointer is emitted for that reason.
+x-evidence:
+- url: https://trust.simspace.com/
+  http_status: 403
+  note: Cloudflare bot challenge to curl; page renders for a browser user-agent.
+  fetched: '2026-08-27'
+- url: https://simspace.com/.well-known/security.txt
+  http_status: 404
+  fetched: '2026-08-27'

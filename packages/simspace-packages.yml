@@ -1,0 +1,64 @@
+generated: '2026-08-27'
+method: searched
+source: https://registry.npmjs.org/-/v1/search?text=simspace
+note: >-
+  SimSpace publishes first-party open-source packages under the @simspace npm scope,
+  but NONE of them is a client library for the SimSpace platform API. They are a React
+  design system and two TypeScript utility libraries, plus a set of re-published forks
+  of the nivo dataviz library. No first-party SDK exists on PyPI, RubyGems, crates.io,
+  Maven Central, NuGet or pkg.go.dev. The PyPI project literally named "simspace"
+  (0.4.1, 2026-08-13) is an unrelated spatial-omics simulation framework by Tianxiao
+  Zhao and is deliberately excluded. Because no API client library was found, this
+  repo does NOT emit an SDKs pointer.
+sdk_count: 0
+packages:
+- language: javascript
+  registry: npm
+  name: '@simspace/monorail'
+  url: https://www.npmjs.com/package/@simspace/monorail
+  install: npm install @simspace/monorail
+  official: true
+  kind: design-system
+  license: MIT
+  repository: https://github.com/Simspace/monorail
+  version: 0.0.27
+  published: '2021-01-22'
+  note: SimSpace Design System — React UI components. Not an API client. Last published
+    2021-01-22, over five years stale.
+- language: typescript
+  registry: npm
+  name: '@simspace/trout'
+  url: https://www.npmjs.com/package/@simspace/trout
+  install: npm install @simspace/trout
+  official: true
+  kind: utility
+  license: Apache-2.0
+  repository: https://gitlab.com/simspace-oss/trout
+  version: 0.0.6
+  published: '2023-05-30'
+  note: Typesafe routing utility. Not an API client.
+- language: typescript
+  registry: npm
+  name: '@simspace/matchers'
+  url: https://www.npmjs.com/package/@simspace/matchers
+  install: npm install @simspace/matchers
+  official: true
+  kind: utility
+  license: Apache-2.0
+  repository: https://gitlab.com/simspace-oss/matchers
+  version: 0.0.4
+  published: '2023-07-04'
+  note: Pattern-matching utility. Not an API client.
+excluded:
+- name: simspace
+  registry: pypi
+  url: https://pypi.org/project/simspace/
+  version: 0.4.1
+  published: '2026-08-13'
+  reason: Namesake only — an in-silico spatial-omics data simulation framework authored
+    by Tianxiao Zhao, unrelated to SimSpace Corporation.
+- name: '@simspace/nivo-*'
+  registry: npm
+  reason: Fifteen packages under the @simspace scope that are re-published forks of
+    plouc/nivo (repository field points at github.com/plouc/nivo), not SimSpace-authored
+    libraries. Latest 0.74.3, 2021-12-07.

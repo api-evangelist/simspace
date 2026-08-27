@@ -1,0 +1,24 @@
+generated: '2026-08-27'
+method: searched
+source: https://simspace.com/request-demo/
+note: >-
+  SimSpace publishes no pricing. https://simspace.com/pricing/ returns HTTP 404 and no
+  pricing or plans page appears anywhere in the sitemap (page-sitemap.xml, 80 pages).
+  The commercial path is enterprise sales only — "Request a Demo" and "Contact Us"
+  forms, plus a partner sign-up form and a Not For Resale page. There is no self-serve
+  tier, no free tier and no published rate card.
+plan_count: 0
+model: enterprise-contact-sales
+plans: []
+contact_paths:
+- https://simspace.com/request-demo/
+- https://simspace.com/contact-us/
+- https://simspace.com/partner-sign-up/
+- https://simspace.com/not-for-resale/
+x-evidence:
+- url: https://simspace.com/pricing/
+  http_status: 404
+  fetched: '2026-08-27'
+- url: https://simspace.com/request-demo/
+  http_status: 200
+  fetched: '2026-08-27'

@@ -1,0 +1,80 @@
+generated: '2026-08-27'
+method: searched
+source: https://simspace.com/release-notes/
+note: >-
+  SimSpace publishes a public release-notes page and an Atlassian Statuspage, and a
+  public Service Level Agreement. It publishes NO deprecation or sunset policy, and no
+  API versioning policy — the release notes version the platform product, not the API.
+  No Deprecation pointer is emitted for that reason.
+versioning:
+  scheme: product-release
+  current: Platform 6.38
+  components:
+  - name: Platform
+    current: '6.38'
+    range: 6.7 - 6.38
+  - name: User Emulation
+    current: 14.6.0
+    range: 14.0.0 - 14.6.0
+  api_versioning:
+    scheme: uri-path
+    current: v1
+    evidence: baseURL https://portal.simspace.com/api/v1
+    docs: null
+    note: The path segment /api/v1 is observed on the live host; SimSpace publishes no
+      written API versioning policy.
+  docs: https://simspace.com/release-notes/
+  dated: false
+  dated_note: The release-notes page lists versions and change summaries but carries no
+    publication dates, so recency cannot be established from it.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  found: false
+  note: No deprecation policy, sunset policy, or RFC 8594 Sunset/Deprecation header
+    documentation was found on simspace.com, the release notes, the SLA, the end user
+    agreement, or the terms of use.
+sla:
+  url: https://simspace.com/service-level-agreement/
+  uptime_target: 99.9%
+  measurement: per Measurement Period, excluding Scheduled Downtime and Reactive
+    Maintenance
+  support_priorities:
+  - priority: 1
+    label: Critical
+    response: 60 minutes
+    resolution_target: 6 hours
+  - priority: 2
+    label: Serious
+    response: 120 minutes
+    resolution_target: 6 hours
+  - priority: 3
+    label: Moderate
+    response: 4 hours
+    resolution_target: 30 days
+  - priority: 4
+    label: Low
+    response: 1 business day
+    resolution_target: may be addressed in a future update
+  service_credits: not specified
+  support_window: Support commitments apply only to software and content versions
+    released within one year.
+status_page: https://status.simspace.com/
+status_page_api: https://status.simspace.com/api/v2/summary.json
+status_page_provider: Atlassian Statuspage
+status_page_components:
+- portal.simspace.com
+- portal-eu.simspace.com
+- portal-sso.simspace.com
+- simspace.com
+- Login
+- Infrastructure
+- ISP connectivity
+- Range
+- Content
+- Candidate Assessments
+deprecated_operations: []
+legal:
+  terms_of_use: https://simspace.com/terms-of-use/
+  end_user_agreement: https://simspace.com/end-user-agreement/
+  privacy_policy: https://simspace.com/privacy-policy/
