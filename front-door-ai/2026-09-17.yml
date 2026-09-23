@@ -1,0 +1,29 @@
+# Front Door AI Index — simspace — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: simspace
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: simspace.com
+  final_host: simspace.com
+  ownership: own
+  owner: simspace
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 43
+  host_score: 43
+  density: 53.42
+  words: 805
+  tiers:
+    agentic: 14
+    core: 29
+    model: 0
+  ambiguous: 19
+  top_terms:
+    AI: 28
+    agent: 19
+    AI agent: 10
+    agentic: 4
+    LLMs: 1
